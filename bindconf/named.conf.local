@@ -1,0 +1,61 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+// Allow DHCP server (isc-dhcp) to update local DNS 
+key dhcpupdate {
+	algorithm hmac-md5;
+	secret "JN0m+oTB5lzyy0WYznQ/VA==";
+};
+
+// Include our adblock zones to point all add serving domains to our pixelsrv
+include "/var/lib/bind/zones.adblock";
+
+// Setting up primary domain zone for local DNS
+zone "collett.us" {
+	type master;
+	file "/var/lib/bind/db.collett.us";
+	allow-update { key dhcpupdate; };
+	allow-transfer { 192.168.0.21; };
+	notify yes;
+	also-notify { 192.168.0.21; };
+};
+
+// Setting up reverse DNS for local LAN
+zone "0.168.192.in-addr.arpa" {
+	type master;
+	notify yes;
+	file "/var/lib/bind/db.192";
+	allow-update { key dhcpupdate; };
+	allow-transfer { 192.168.0.21; };
+	also-notify { 192.168.0.21; };
+};
+
+logging{
+        channel simple_log {
+                file "/var/lib/bind/logs/bind.log" versions 3 size 5m;
+                severity warning;
+                print-time yes;
+                print-severity yes;
+                print-category yes;
+        };
+
+        category default {
+                simple_log;
+        };
+
+        channel query_log {
+                file "/var/lib/bind/logs/bind-queries.log";
+                print-category yes;
+                print-time yes;
+        };
+
+        category queries {
+                query_log;
+        };
+};
+

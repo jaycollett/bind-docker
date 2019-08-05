@@ -1,0 +1,48 @@
+$TTL 604800     ; 1 week
+
+@	IN	SOA	ns.collett.us. jay.collett.us. (
+				221021686  ; serial
+                	        604800     ; refresh (1 week)
+                        	86400      ; retry (1 day)
+                                2419200    ; expire (4 weeks)
+                                604800     ; minimum (1 week)
+                                )
+
+; our local name servers NS recs
+	IN	NS	ns.collett.us.
+	IN	NS	ns2.collett.us.
+
+;
+; Static collet.us records
+;
+
+; Core servers (mail, dhcp, etc)
+router          IN      A       192.168.0.1
+timesrv			IN		A		192.168.0.2
+coreswitch      IN      A       192.168.0.3
+alarmsrv        IN      A       192.168.0.4
+ha              IN      A       192.168.0.5
+vpn             IN      A       192.168.0.7
+goofpbx         IN      A       192.168.0.8
+esxihost        IN      A       192.168.0.10
+homeplex		IN		A		192.168.0.11
+appserver		IN		A		192.168.0.12
+pitorrent       IN      A       192.168.0.13
+unifi			IN		A		192.168.0.15
+
+ns				IN		A		192.168.0.20
+ns2             IN      A       192.168.0.21
+
+multimediavault IN      A       192.168.0.201
+ms1				IN		A		192.168.0.202
+goofnas			IN		A		192.168.0.202
+envisalink      IN      A       192.168.0.225
+null            IN      A       192.168.0.254 ; our adblock pixelsrv IP
+
+
+; Other static IPs for domain
+appsrv          IN      A       192.168.0.4
+octopi			IN		A		192.168.0.43
+
+; CNAME Records
+www				IN		CNAME	ms1.collett.us.

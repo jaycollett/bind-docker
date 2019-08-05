@@ -1,0 +1,37 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	ns.collett.us. jay.collett.us. (
+			 221021291 	; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; name servers
+	IN	NS	 ns.collett.us.
+	IN	NS	 ns2.collett.us.
+
+
+; ptr records
+1	IN	PTR	router.collett.us.
+2	IN	PTR	timesrv.collett.us
+3	IN	PTR	coreswitch.collett.us.
+4	IN	PTR	alarmsrv.collett.us.
+5	IN	PTR	ha.collett.us.
+7	IN	PTR	vpn.collett.us.
+8	IN	PTR	goofpbx.collett.us.
+10	IN	PTR	esxihost.collett.us.
+11	IN	PTR	homeplex.collett.us.
+13	IN	PTR	piTorrent.collett.us.
+15	IN	PTR	unifi.collett.us
+
+20	IN	PTR	ns.collett.us.
+21	IN	PTR	ns2.collett.us.
+43	IN	PTR	octopi.collett.us.
+
+; higher level IP servers
+201	IN	PTR	multimediavault.collett.us.
+202	IN	PTR	goofnas.collett.us
+225	IN	PTR	envisalink.collett.us.
+

@@ -1,0 +1,13 @@
+$TTL     86400   ; one day
+@ IN SOA collett.us. root.collett.us. (
+    2015082801   ; serial number YYMMDDNN
+         28800   ; refresh 8 hours
+          7200   ; retry 2 hours
+        864000   ; expire 10 days
+         86400 ) ; min ttl 1 day
+     NS ns.collett.us.
+@ IN A  192.168.0.254
+* IN A  192.168.0.254
+
+
+
